@@ -4,27 +4,33 @@ console.log(puppyList)
 import './App.css'
 
 
-const [puppies, setPuppies] = useState(puppyList)
 
-console.log(puppies)
+
 
 
 function App() {
+  const [puppies, setPuppies] = useState(puppyList)
+  const [featPupId, setFeatPupId] = useState(null)
 
-  const [puppies, setPuppies] = useState(puppyList);
+  
 
-  console.log("puppyList: ", puppyList);
+function handleClick(puppyId) {
+  setFeatPupId(puppyId)
+}
 
-  return (
+
+  return(
     <div className="App">
       {
         puppies.map((puppy) => {
-             return <p key={puppy.id}>{puppy.name}</p>;
+             return <p onClick={()=>handleClick(puppy.id)} key={puppy.id}>{puppy.name}</p>;
            })
        }
+       <p>{featPupId}</p>
     </div>
   );
 }
+
 
 
 
